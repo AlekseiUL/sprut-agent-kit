@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "name": "ClaudeClaw ⚡",
   "description": "Персональный AI-агент на Claude Code с памятью, скиллами и автоматикой",
-
   "owner": {
     "name": "YOUR_NAME",
     "telegramId": 0,
     "timezone": "UTC",
     "timezoneOffset": 0
   },
-
   "daemon": {
     "enabled": true,
     "host": "127.0.0.1",
@@ -20,27 +18,23 @@
       "port": 4632
     }
   },
-
   "telegram": {
     "enabled": true,
     "token": "${TELEGRAM_BOT_TOKEN}",
     "allowedUserIds": [],
     "progressMessages": true
   },
-
   "models": {
     "primary": "claude-opus-4-6",
     "fallback": "claude-sonnet-4-5-20250929",
     "api": "anthropic"
   },
-
   "memory": {
     "enabled": true,
     "provider": "sqlite",
     "path": "~/.claude/plugins/cache/claudeclaw/claudeclaw/1.0.0/.claude/claudeclaw/memory.sqlite",
-    "openaiApiKeyPath": "~/.env",
     "embedding": {
-      "model": "text-embedding-3-small",
+      "model": "auto",
       "dimensions": 1536
     },
     "search": {
@@ -59,9 +53,9 @@
         "threshold": 0.1
       }
     },
-    "autoExtract": true
+    "autoExtract": true,
+    "_note": "embedding model auto = берёт от основного провайдера. Если хотите OpenAI: поменяйте на text-embedding-3-small и добавьте OPENAI_API_KEY"
   },
-
   "skills": {
     "enabled": true,
     "path": "~/.claude/skills",
@@ -85,7 +79,6 @@
       "last30days"
     ]
   },
-
   "crons": {
     "enabled": true,
     "jobs": [
@@ -109,7 +102,6 @@
       }
     ]
   },
-
   "security": {
     "level": "moderate",
     "allowedTools": [],
@@ -130,14 +122,12 @@
       ]
     }
   },
-
   "heartbeat": {
     "enabled": false,
     "interval": 15,
     "prompt": "",
     "excludeWindows": []
   },
-
   "paths": {
     "root": "~/.claude",
     "plugins": "~/.claude/plugins/cache/claudeclaw/claudeclaw/1.0.0",
@@ -147,7 +137,6 @@
     "logs": "~/.claude/plugins/cache/claudeclaw/claudeclaw/1.0.0/.claude/claudeclaw/logs",
     "backups": "~/.claudeclaw/backups"
   },
-
   "identity": {
     "name": "ClaudeClaw",
     "emoji": "⚡",
@@ -155,10 +144,13 @@
     "vibe": "Быстрый, дружелюбный, без лишних слов",
     "platform": "Claude Code Desktop"
   },
-
   "compatibility": {
-    "canImportFrom": ["OpenClaw"],
-    "canExportTo": ["OpenClaw"],
+    "canImportFrom": [
+      "OpenClaw"
+    ],
+    "canExportTo": [
+      "OpenClaw"
+    ],
     "sharedResources": {
       "memory": true,
       "skills": true,
@@ -166,7 +158,6 @@
       "persistentAgents": false
     }
   },
-
   "meta": {
     "created": "2026-03-01T00:00:00Z",
     "lastUpdated": "2026-03-05T16:00:00Z",
