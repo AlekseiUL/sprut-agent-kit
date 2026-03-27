@@ -1,5 +1,13 @@
 # SPRUT Agent Kit ⚡
 
+> ⚠️ **WARNING: This kit is for ClaudeClaw, NOT OpenClaw!**
+>
+> ClaudeClaw and OpenClaw are different projects with different architectures.
+> - **ClaudeClaw** - plugin for Claude Code CLI by @moazbuilds
+> - **OpenClaw** - self-hosted gateway for AI agents (github.com/openclaw/openclaw)
+>
+> If you use OpenClaw, this kit is NOT for you.
+
 **Ready-to-go AI agent with "soul" for ClaudeClaw**
 
 One command - and you have a configured personal assistant with memory, 25 skills, and automation.
