@@ -10,6 +10,17 @@
 
 **Ready-to-go AI agent with "soul" for ClaudeClaw**
 
+## Canonical source
+
+This project is maintained by Aleksei Ulianov / Sprut_AI.
+Original repository: https://github.com/AlekseiUL/sprut-agent-kit
+
+If you found this project mirrored, repackaged, or redistributed elsewhere, check this repository as the source of truth.
+
+## Attribution
+
+Where permitted by the applicable license, if you reuse, fork, modify, package, or publish this work, keep the original copyright and license notice and link back to the canonical repository.
+
 One command - and you have a configured personal assistant with memory, 25 skills, and automation.
 
 ## What is this?
@@ -25,7 +36,7 @@ Starter kit for [ClaudeClaw](https://github.com/moazbuilds/claudeclaw) - a ready
 ## Quick Start
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/sprut-agent-kit.git
+git clone https://github.com/AlekseiUL/sprut-agent-kit.git
 cd sprut-agent-kit
 ./install.sh
 ```
@@ -208,7 +219,7 @@ Starter kit для [ClaudeClaw](https://github.com/moazbuilds/claudeclaw) - го
 ## Быстрый старт
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/sprut-agent-kit.git
+git clone https://github.com/AlekseiUL/sprut-agent-kit.git
 cd sprut-agent-kit
 ./install.sh
 ```
