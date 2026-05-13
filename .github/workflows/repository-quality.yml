@@ -1,0 +1,91 @@
+name: repository-quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run repository quality checks
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import ast
+          import json
+          import pathlib
+          import re
+          import subprocess
+          import sys
+
+          root = pathlib.Path('.').resolve()
+          skip_dirs = {'.git', '.venv', 'venv', 'node_modules', 'dist', 'build', '__pycache__', '.pytest_cache'}
+
+          def wanted(path):
+              return not any(part in skip_dirs for part in path.parts)
+
+          failures = []
+
+          for path in root.rglob('*.sh'):
+              rel = path.relative_to(root)
+              if not wanted(rel):
+                  continue
+              result = subprocess.run(['bash', '-n', str(path)], text=True, capture_output=True)
+              if result.returncode != 0:
+                  failures.append(f'bash syntax: {rel}: {result.stderr.strip()}')
+
+          for path in root.rglob('*.py'):
+              rel = path.relative_to(root)
+              if not wanted(rel):
+                  continue
+              try:
+                  ast.parse(path.read_text(encoding='utf-8'), filename=str(rel))
+              except Exception as exc:
+                  failures.append(f'python syntax: {rel}: {exc}')
+
+          for path in root.rglob('*.json'):
+              rel = path.relative_to(root)
+              if not wanted(rel):
+                  continue
+              try:
+                  json.loads(path.read_text(encoding='utf-8'))
+              except Exception as exc:
+                  failures.append(f'json parse: {rel}: {exc}')
+
+          link_re = re.compile(r'\[[^\]]+\]\(([^)]+)\)')
+          skip_link_values = {'url', 'image.jpg', 'repo-url', '<repo-url>', '<path>', 'path/to/image.jpg'}
+          for path in root.rglob('*.md'):
+              rel = path.relative_to(root)
+              if not wanted(rel):
+                  continue
+              text = path.read_text(encoding='utf-8', errors='ignore')
+              for match in link_re.finditer(text):
+                  target = match.group(1).strip().split('#', 1)[0]
+                  if not target:
+                      continue
+                  low = target.lower()
+                  if low in skip_link_values or low.startswith(('http://', 'https://', 'mailto:', '#')):
+                      continue
+                  if target.startswith(('~/', '/', '<')) or '://' in target:
+                      continue
+                  resolved = (path.parent / target).resolve()
+                  if not resolved.exists():
+                      failures.append(f'missing markdown link: {rel} -> {target}')
+
+          if failures:
+              print('Repository quality check failed:')
+              for failure in failures:
+                  print('-', failure)
+              sys.exit(1)
+
+          print('Repository quality checks passed.')
+          PY

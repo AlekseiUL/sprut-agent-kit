@@ -23,6 +23,16 @@ Where permitted by the applicable license, if you reuse, fork, modify, package, 
 
 One command - and you have a configured personal assistant with memory, 25 skills, and automation.
 
+## Who is this for?
+
+SPRUT Agent Kit is for Claude Code / ClaudeClaw users who want a ready-to-run personal agent instead of an empty bot shell:
+
+- creators and operators who need memory, skills, crons, and Telegram progress messages from day one;
+- agent builders who want a portable "soul + skills + memory" template they can adapt;
+- advanced users who are comfortable running local scripts and keeping their own tokens/configs safe.
+
+It is **not** for OpenClaw users. If you are building on OpenClaw, use the OpenClaw-specific kits instead.
+
 ## What is this?
 
 Starter kit for [ClaudeClaw](https://github.com/moazbuilds/claudeclaw) - a ready-made agent configuration with:

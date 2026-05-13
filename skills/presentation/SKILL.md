@@ -42,7 +42,7 @@ paginate: true
 
 ## Слайд с изображением
 
-![bg right:40%](image.jpg)
+![bg right:40%](path/to/image.jpg)
 
 Текст слева от картинки
 
@@ -83,11 +83,11 @@ marp presentation.md -o ~/Desktop/presentation.html
 
 ### Background images
 ```markdown
-![bg](image.jpg)           # full background
-![bg left](image.jpg)      # left split
-![bg right:40%](image.jpg) # right 40%
-![bg contain](image.jpg)   # fit inside
-![bg cover](image.jpg)     # cover (crop)
+![bg](path/to/image.jpg)           # full background
+![bg left](path/to/image.jpg)      # left split
+![bg right:40%](path/to/image.jpg) # right 40%
+![bg contain](path/to/image.jpg)   # fit inside
+![bg cover](path/to/image.jpg)     # cover (crop)
 ```
 
 ### Text styling
