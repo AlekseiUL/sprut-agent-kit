@@ -10,6 +10,50 @@
 
 **Ready-to-go AI agent with "soul" for ClaudeClaw**
 
+## Русская версия
+
+SPRUT Agent Kit - это готовый набор для сборки AI-агента с характером, памятью и набором skills.
+
+Репозиторий нужен тем, кто хочет не начинать с пустого чата, а быстро поднять агента с понятной структурой: persona, memory, skills, configuration, daemon/web UI pieces и переносимой “душой” агента. Это стартовый kit для ClaudeClaw/OpenClaw-style рабочего контура, где агенту дают не только промпт, но и правила работы, память и инструменты.
+
+## Что внутри
+
+- готовая структура agent kit;
+- persona / soul files;
+- memory templates;
+- набор skills;
+- configuration examples;
+- daemon и web UI pieces;
+- объяснение portable soul architecture;
+- инструкции по установке и настройке.
+
+## Для кого
+
+- для тех, кто собирает собственного AI-агента;
+- для пользователей ClaudeClaw/OpenClaw-style окружений;
+- для людей, которым нужен не демо-бот, а переносимый рабочий агент;
+- для тех, кто хочет понять, как упаковать persona, memory и skills в один repo.
+
+## Что это не делает
+
+Это не SaaS и не готовая облачная платформа. Репозиторий не содержит приватных ключей, личной памяти, токенов или ваших рабочих данных. Все секреты и реальные runtime-настройки нужно хранить локально.
+
+## Быстрый старт
+
+```bash
+git clone https://github.com/AlekseiUL/sprut-agent-kit.git
+cd sprut-agent-kit
+```
+
+Дальше следуйте инструкциям в английской части README: скопируйте нужные files в свой agent workspace, настройте конфиг и добавляйте только свои локальные секреты.
+
+## Public links / Полезные ссылки
+
+- YouTube: https://youtube.com/@alekseiulianov
+- Telegram channel - Sprut AI: https://t.me/Sprut_AI
+- Telegram chat - Sprut AI: https://t.me/+eH-qNIDmud8zNDZi
+- AI Операционка: https://t.me/tribute/app?startapp=sJyg
+
 ## Canonical source
 
 This project is maintained by Aleksei Ulianov / Sprut_AI.
