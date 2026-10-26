@@ -161,15 +161,20 @@ import_soul() {
   mkdir -p "$soul_dest"
 
   if [ -f "$(pwd)/SOUL.md" ] && [ -f "$(pwd)/AGENTS.md" ]; then
-    cp "$(pwd)/SOUL.md" "$soul_dest/"
-    cp "$(pwd)/AGENTS.md" "$soul_dest/"
+    for file in SOUL.md AGENTS.md; do
+      if [ ! -e "$soul_dest/$file" ] && [ ! -L "$soul_dest/$file" ]; then
+        cp "$(pwd)/$file" "$soul_dest/$file"
+      fi
+    done
     log_info "SOUL.md и AGENTS.md скопированы в $soul_dest"
   else
     log_warn "Файлы SOUL.md или AGENTS.md не найдены"
   fi
 
   if [ -f "$(pwd)/claudeclaw.json" ]; then
-    cp "$(pwd)/claudeclaw.json" "$soul_dest/"
+    if [ ! -e "$soul_dest/claudeclaw.json" ] && [ ! -L "$soul_dest/claudeclaw.json" ]; then
+      cp "$(pwd)/claudeclaw.json" "$soul_dest/"
+    fi
     log_info "claudeclaw.json скопирован"
   fi
 }
@@ -201,10 +206,12 @@ import_memory() {
   if [ -d "$memory_path" ]; then
     for f in "$memory_path"/*.md; do
       [ -f "$f" ] || continue
+      [ ! -e "$memory_dir/imported-$(basename "$f")" ] || continue
       cp "$f" "$memory_dir/imported-$(basename "$f")"
       count=$((count + 1))
     done
   elif [ -f "$memory_path" ]; then
+    [ ! -e "$memory_dir/imported-$(basename "$memory_path")" ] || return 0
     cp "$memory_path" "$memory_dir/imported-$(basename "$memory_path")"
     count=1
   fi
