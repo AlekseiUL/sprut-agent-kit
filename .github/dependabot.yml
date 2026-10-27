@@ -1,0 +1,8 @@
+# Updates are proposals. Review and passing CI are required; no auto-merge.
+version: 2
+updates:
+- package-ecosystem: github-actions
+  directory: /
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 5
