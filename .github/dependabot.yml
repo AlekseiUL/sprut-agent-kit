@@ -2,6 +2,10 @@
 version: 2
 updates:
 - package-ecosystem: github-actions
+  groups:
+    actions-compatible:
+      patterns: ['*']
+      update-types: [minor, patch]
   directory: /
   schedule:
     interval: weekly
